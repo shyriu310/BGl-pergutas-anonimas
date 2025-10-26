@@ -1,2 +1,82 @@
- html <!DOCTYPE html> <html lang="pt-BR"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Perguntas Anônimas</title>     <link rel="stylesheet" href="styles.css"> </head> <body>     <div class="container">         <h1>Perguntas Anônimas</h1>         <form id="questionForm">             <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required>             <button type="submit">Enviar</button>         </form>         <div id="questionsList"></div>         <div id="adminPanel" style="display: none;">             <h2>Perguntas Recebidas (Admin)</h2>             <div id="adminQuestionsList"></div>         </div>     </div>     <script src="script.js"></script> </body> </html>
+
  
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Perguntas Anônimas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header card">
+      <h1>Perguntas Anônimas</h1>
+      <div class="header-actions">
+        <button id="adminOpenBtn" class="secondary">Login Admin</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="publicSection" class="card">
+        <h2>Envie sua pergunta (anônima)</h2>
+        <form id="questionForm" class="form">
+          <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required autocomplete="off" />
+          <div class="form-actions">
+            <button type="submit">Enviar</button>
+            <div id="sendFeedback" class="muted small" aria-live="polite"></div>
+          </div>
+        </form>
+
+        <div class="muted small" style="margin-top:10px;">
+          As perguntas não são exibidas publicamente. Apenas o administrador poderá visualizá-las.
+        </div>
+      </section>
+
+      <section id="adminPanel" class="card" style="display:none;">
+        <div class="admin-header">
+          <h2>Perguntas Recebidas (Admin)</h2>
+          <div class="admin-controls">
+            <input id="adminSearch" placeholder="Buscar perguntas..." />
+            <div class="filters">
+              <button class="filter active" data-filter="all">Todas</button>
+              <button class="filter" data-filter="unanswered">Não respondidas</button>
+              <button class="filter" data-filter="answered">Respondidas</button>
+            </div>
+            <button id="exportBtn">Exportar JSON</button>
+            <label class="file-label">
+              Importar JSON
+              <input type="file" id="importFile" accept="application/json" />
+            </label>
+            <button id="adminLogoutBtn" class="danger">Sair</button>
+          </div>
+        </div>
+
+        <div id="adminStats" class="muted small"></div>
+        <div id="adminQuestionsList" class="list"></div>
+        <div id="adminNoQuestions" class="muted">Nenhuma pergunta cadastrada.</div>
+      </section>
+
+      <div id="toast" class="toast" aria-live="polite"></div>
+    </main>
+
+    <footer class="muted small card">Observação: o acesso de admin implementado aqui é apenas client-side (demo). Para produção, implemente autenticação e backend seguro.</footer>
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal" aria-hidden="true">
+    <div class="modal-content card">
+      <h3>Login do Administrador</h3>
+      <p class="muted small">Insira a senha para acessar o painel de administração.</p>
+      <input type="password" id="adminPasswordInput" placeholder="Senha do admin" autocomplete="current-password" />
+      <div class="modal-actions">
+        <button id="loginBtn">Entrar</button>
+        <button id="loginCancelBtn" class="secondary">Cancelar</button>
+      </div>
+      <div id="loginError" class="muted small" style="color:var(--danger);display:none;margin-top:8px;"></div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
