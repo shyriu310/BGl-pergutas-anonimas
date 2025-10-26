@@ -24,27 +24,27 @@
         <div class="hero">
           <div class="hero-left">
             <h2>Envie sua pergunta (anônima ou com cadastro rápido)</h2>
-            <p class="muted">Use o cadastro rápido para salvar suas perguntas localmente e identificá-las com um nome de usuário.</p>
+            <p class="muted">Crie uma conta local para identificar suas perguntas (armazenamento local). Para produção, substitua por um backend seguro.</p>
 
             <form id="questionForm" class="form" autocomplete="off">
               <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required />
               <div class="form-row">
                 <button type="submit" class="btn primary">Enviar</button>
-                <button id="saveGithubBtn" type="button" class="btn accent" title="Opcional: salva também no GitHub (se ativado no servidor)">Salvar no GitHub (opcional)</button>
+                <button id="saveGithubBtn" type="button" class="btn accent" title="Opcional: salva também no GitHub (requer servidor)">Salvar no GitHub (opcional)</button>
               </div>
               <div id="sendFeedback" class="muted small" aria-live="polite"></div>
             </form>
 
-            <div class="muted small note">As perguntas podem ser anônimas. Ao usar cadastro, você usa um nome simples (demo).</div>
+            <div class="muted small note">Ao usar cadastro local, seus dados ficam no navegador. Para produção, implemente backend e autenticação segura.</div>
           </div>
 
           <div class="hero-right card mini">
-            <h3>Cadastro Rápido (demo)</h3>
+            <h3>Cadastro Rápido (local)</h3>
             <form id="signupForm" class="form-vertical" autocomplete="off">
               <input id="signupUser" placeholder="Nome de usuário" />
-              <input id="signupPass" type="password" placeholder="Senha simples" />
+              <input id="signupPass" type="password" placeholder="Senha" />
               <div class="form-row">
-                <button id="signupBtn" type="button" class="btn small primary">Criar/Entrar</button>
+                <button id="signupBtn" type="button" class="btn small primary">Criar / Entrar</button>
                 <button id="logoutBtn" type="button" class="btn small secondary" style="display:none">Logout</button>
               </div>
               <div id="userInfo" class="muted small" style="margin-top:8px;"></div>
@@ -80,17 +80,17 @@
       <div id="toast" class="toast" aria-live="polite"></div>
     </main>
 
-    <footer class="muted small card">Observação: autenticação aqui é demo. Para produção implemente backend seguro.</footer>
+    <footer class="muted small card">Observação: esta versão usa armazenamento local para contas e perguntas. Em produção, substitua por backend seguro e armazenamento centralizado.</footer>
   </div>
 
   <!-- Login Modal -->
   <div id="loginModal" class="modal" aria-hidden="true">
     <div class="modal-content card">
-      <h3>Login do Administrador</h3>
-      <p class="muted small">Insira a senha para acessar o painel de administração.</p>
+      <h3 id="loginModalTitle">Login do Administrador</h3>
+      <p id="loginModalDesc" class="muted small">Insira a senha para acessar o painel de administração. Se ainda não houver senha, você poderá criar uma agora.</p>
       <input type="password" id="adminPasswordInput" placeholder="Senha do admin" autocomplete="current-password" />
       <div class="modal-actions">
-        <button id="loginBtn" class="btn primary">Entrar</button>
+        <button id="loginBtn" class="btn primary">Entrar / Criar</button>
         <button id="loginCancelBtn" class="btn secondary">Cancelar</button>
       </div>
       <div id="loginError" class="muted small" style="color:var(--danger);display:none;margin-top:8px;"></div>
