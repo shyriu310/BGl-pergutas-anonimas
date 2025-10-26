@@ -1,35 +1,55 @@
-
- 
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Perguntas Anônimas</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <header class="header card">
-      <h1>Perguntas Anônimas</h1>
+      <div class="brand">
+        <h1>Perguntas Anônimas</h1>
+        <span class="tagline">Envie dúvidas rapidamente — anônimo ou com conta</span>
+      </div>
       <div class="header-actions">
-        <button id="adminOpenBtn" class="secondary">Login Admin</button>
+        <button id="ctaPulse" class="btn primary pulse">Enviar Pergunta</button>
+        <button id="adminOpenBtn" class="btn secondary">Login Admin</button>
       </div>
     </header>
 
     <main>
       <section id="publicSection" class="card">
-        <h2>Envie sua pergunta (anônima)</h2>
-        <form id="questionForm" class="form">
-          <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required autocomplete="off" />
-          <div class="form-actions">
-            <button type="submit">Enviar</button>
-            <div id="sendFeedback" class="muted small" aria-live="polite"></div>
-          </div>
-        </form>
+        <div class="hero">
+          <div class="hero-left">
+            <h2>Envie sua pergunta (anônima ou com cadastro rápido)</h2>
+            <p class="muted">Use o cadastro rápido para salvar suas perguntas localmente e identificá-las com um nome de usuário.</p>
 
-        <div class="muted small" style="margin-top:10px;">
-          As perguntas não são exibidas publicamente. Apenas o administrador poderá visualizá-las.
+            <form id="questionForm" class="form" autocomplete="off">
+              <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required />
+              <div class="form-row">
+                <button type="submit" class="btn primary">Enviar</button>
+                <button id="saveGithubBtn" type="button" class="btn accent">Salvar no GitHub</button>
+              </div>
+              <div id="sendFeedback" class="muted small" aria-live="polite"></div>
+            </form>
+
+            <div class="muted small note">As perguntas podem ser anônimas. Ao usar cadastro, você usa um nome simples (demo).</div>
+          </div>
+
+          <div class="hero-right card mini">
+            <h3>Cadastro Rápido (demo)</h3>
+            <form id="signupForm" class="form-vertical" autocomplete="off">
+              <input id="signupUser" placeholder="Nome de usuário" />
+              <input id="signupPass" type="password" placeholder="Senha simples" />
+              <div class="form-row">
+                <button id="signupBtn" type="button" class="btn small primary">Criar/Entrar</button>
+                <button id="logoutBtn" type="button" class="btn small secondary" style="display:none">Logout</button>
+              </div>
+              <div id="userInfo" class="muted small" style="margin-top:8px;"></div>
+            </form>
+          </div>
         </div>
       </section>
 
@@ -43,12 +63,12 @@
               <button class="filter" data-filter="unanswered">Não respondidas</button>
               <button class="filter" data-filter="answered">Respondidas</button>
             </div>
-            <button id="exportBtn">Exportar JSON</button>
-            <label class="file-label">
+            <button id="exportBtn" class="btn small">Exportar JSON</button>
+            <label class="file-label btn small secondary">
               Importar JSON
               <input type="file" id="importFile" accept="application/json" />
             </label>
-            <button id="adminLogoutBtn" class="danger">Sair</button>
+            <button id="adminLogoutBtn" class="btn small danger">Sair</button>
           </div>
         </div>
 
@@ -60,7 +80,7 @@
       <div id="toast" class="toast" aria-live="polite"></div>
     </main>
 
-    <footer class="muted small card">Observação: o acesso de admin implementado aqui é apenas client-side (demo). Para produção, implemente autenticação e backend seguro.</footer>
+    <footer class="muted small card">Observação: autenticação aqui é demo. Para produção implemente backend seguro.</footer>
   </div>
 
   <!-- Login Modal -->
@@ -70,8 +90,8 @@
       <p class="muted small">Insira a senha para acessar o painel de administração.</p>
       <input type="password" id="adminPasswordInput" placeholder="Senha do admin" autocomplete="current-password" />
       <div class="modal-actions">
-        <button id="loginBtn">Entrar</button>
-        <button id="loginCancelBtn" class="secondary">Cancelar</button>
+        <button id="loginBtn" class="btn primary">Entrar</button>
+        <button id="loginCancelBtn" class="btn secondary">Cancelar</button>
       </div>
       <div id="loginError" class="muted small" style="color:var(--danger);display:none;margin-top:8px;"></div>
     </div>
