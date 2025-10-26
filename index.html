@@ -1,23 +1,2 @@
-html
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perguntas Anônimas</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Perguntas Anônimas</h1>
-        <form id="questionForm">
-            <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required>
-            <button type="submit">Enviar</button>
-        </form>
-        <div id="questionsList"></div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
-css
-body {font-family: Arial, sans-serif; background-color: #f0f0f0; color: #333;} .container {max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);} h1 {text-align: center;} form {display: flex; margin-bottom: 20px;} input {flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;} button {padding: 10px 15px; border: none; background: #5cb85c; color: white; border-radius: 4px; cursor: pointer;} button:hover {background: #4cae4c;} #questionsList {margin-top: 20px;}
+ html <!DOCTYPE html> <html lang="pt-BR"> <head>     <meta charset="UTF-8">     <meta name="viewport" content="width=device-width, initial-scale=1.0">     <title>Perguntas Anônimas</title>     <link rel="stylesheet" href="styles.css"> </head> <body>     <div class="container">         <h1>Perguntas Anônimas</h1>         <form id="questionForm">             <input type="text" id="questionInput" placeholder="Digite sua pergunta..." required>             <button type="submit">Enviar</button>         </form>         <div id="questionsList"></div>         <div id="adminPanel" style="display: none;">             <h2>Perguntas Recebidas (Admin)</h2>             <div id="adminQuestionsList"></div>         </div>     </div>     <script src="script.js"></script> </body> </html>
+ 
